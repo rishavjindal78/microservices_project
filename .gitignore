@@ -8,6 +8,7 @@
 .project
 .springBeans
 target/
+.mvn/wrapper
 .factorypath
 **/.sts4-cache/*
 
