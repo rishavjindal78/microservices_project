@@ -23,7 +23,18 @@ zuul:
       path: /tradeapi/**
       serviceId: trading-service
       stripPrefix: true
-    
+    marketdataapi:  
+      path: /marketdataapi/**
+      serviceId: market-data-service
+      stripPrefix: true
+    refdataapi:   
+      path: /refdataapi/**
+      serviceId: ref-data-service
+      stripPrefix: true
+    notifyapi:   
+      path: /notifyapi/**
+      serviceId: notification-service
+      stripPrefix: true
 
 server:
   port: 8765
