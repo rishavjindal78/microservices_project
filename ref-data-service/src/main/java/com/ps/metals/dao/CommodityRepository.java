@@ -5,7 +5,7 @@ import com.ps.metals.model.Location;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("commodityRepository ")
+@Repository("commodityRepository")
 public interface CommodityRepository extends CrudRepository<Commodity, String> {
     public Commodity findByCode(String Code);
 }
