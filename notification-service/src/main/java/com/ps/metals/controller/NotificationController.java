@@ -1,4 +1,4 @@
-package com.ps.metals.resource;
+package com.ps.metals.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/trades")
-public class RefDataController {
-	
-	@GetMapping("/refdata")
-	public ResponseEntity<String> getRefData() {
-		return new ResponseEntity<String>("Apple, Inc.",HttpStatus.OK);
-	}
+public class NotificationController {
 
+	@GetMapping("/notify")
+	public <T> ResponseEntity<String> sendNotification() {
+		return new ResponseEntity<String>("Notification sent successfully",HttpStatus.OK);
+	}
 }

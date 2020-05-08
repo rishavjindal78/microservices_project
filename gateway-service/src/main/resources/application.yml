@@ -28,7 +28,7 @@ zuul:
       serviceId: market-data-service
       stripPrefix: true
     refdataapi:   
-      path: /refdataapi/**
+      path: /refdata/**
       serviceId: ref-data-service
       stripPrefix: true
     notifyapi:   

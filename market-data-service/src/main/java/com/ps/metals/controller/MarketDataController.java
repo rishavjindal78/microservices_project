@@ -1,4 +1,4 @@
-package com.ps.metals.resource;
+package com.ps.metals.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
