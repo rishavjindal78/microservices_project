@@ -12,7 +12,7 @@
 	<artifactId>ref-data-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ref-data-service</name>
-	<description>Refdata Service supports read-only reference entities such as Counterparties</description>
+	<description>Refdata Service provides readonly end points to get reference data. As of now if supports following entities : Commodity, Counter Party, Location</description>
 
 	<properties>
 		<java.version>1.8</java.version>
