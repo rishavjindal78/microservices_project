@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,8 @@ public class TradeController {
 	
 	private static final Logger log = LoggerFactory.getLogger(TradeController.class);
 	
+	private static final String TOPIC = "trade_producer";
+	
 	@Autowired
 	private RefDataServiceFeignClient feignClient;
 	
@@ -37,6 +40,9 @@ public class TradeController {
 	
 	@Autowired
 	private TradeRepository repository;
+	
+	@Autowired
+	private KafkaTemplate<String, TradeVO> kafkaTemplate;
 	
 	
 	@RequestMapping("/all")
@@ -78,6 +84,8 @@ public class TradeController {
 
 		
 		tradeVO = helper.prepareTrade(tradeVO, refData, TradeRefData.COMMODITY);
+		
+		kafkaTemplate.send(TOPIC, tradeVO);
 
 		return new ResponseEntity<>(tradeVO,HttpStatus.OK);
 	}
