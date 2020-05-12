@@ -5,6 +5,11 @@ public class RefDataVO {
 	private String code;
     private String name;
     
+    public RefDataVO( String code, String name){
+    	this.code = code;
+    	this.name = name;
+    } 
+    
 	public String getCode() {
 		return code;
 	}
