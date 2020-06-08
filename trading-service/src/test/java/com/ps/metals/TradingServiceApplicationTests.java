@@ -1,13 +1,18 @@
 package com.ps.metals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.client.RestTemplate;
 
-@SpringBootTest
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(
+        classes = TradingServiceApplication.class,
+        webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class TradingServiceApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+	  protected RestTemplate restTemplate = new RestTemplate();
+
+	    protected final String DEFAULT_URL = "http://localhost:8081/";
 
 }

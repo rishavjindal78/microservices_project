@@ -53,10 +53,10 @@ public class TradeController {
 	
 	
 	@RequestMapping(value = "/{tradeId}", method = RequestMethod.GET)
-	public Optional<Trade> getTrade(@PathVariable String tradeId) {
+	public Trade getTrade(@PathVariable String tradeId) {
 		log.info("Getting user with ID: {}.", tradeId);
 		
-		return repository.findById(tradeId);
+		return repository.findById(tradeId).get();
 	}
 	
 	@GetMapping("/aggregate/{tradeId}")

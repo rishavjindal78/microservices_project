@@ -1,9 +1,14 @@
 package com.ps.metals.controller;
 
-import com.ps.metals.model.RefData;
-import com.ps.metals.model.RefDataEntity;
-import com.ps.metals.model.ResponseWrapper;
-import com.ps.metals.service.RefDataService;
+import static com.ps.metals.model.ResponseWrapper.failure;
+import static com.ps.metals.model.ResponseWrapper.success;
+
+import java.sql.Ref;
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -13,17 +18,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Ref;
-import java.util.List;
-import java.util.Optional;
-
-import static com.ps.metals.model.ResponseWrapper.failure;
-import static com.ps.metals.model.ResponseWrapper.success;
+import com.ps.metals.model.RefData;
+import com.ps.metals.model.RefDataEntity;
+import com.ps.metals.model.ResponseWrapper;
+import com.ps.metals.service.RefDataService;
 
 @RestController
 @RequestMapping("/refdata")
 public class RefDataController {
 
+	private static Logger log = LoggerFactory.getLogger(RefDataController.class);
+	
     @Autowired
     @Qualifier("locationDataService")
     private RefDataService locationDataService;
@@ -37,6 +42,7 @@ public class RefDataController {
 
     @GetMapping("/{entityTypeName}")
     public ResponseEntity<ResponseWrapper> getRefData(@PathVariable String entityTypeName) {
+    	log.info("Entered into the contoller method getRefData with entityTypeName::");
         Optional<RefDataEntity> entityOptional = RefDataEntity.byName(entityTypeName);
         if (!entityOptional.isPresent()) {
             return new ResponseEntity<ResponseWrapper>(failure("Reference data type - " + entityTypeName + " is not supported"), HttpStatus.BAD_REQUEST);
@@ -62,6 +68,7 @@ public class RefDataController {
 
     @GetMapping("/{entityTypeName}/{code}")
     public ResponseEntity<ResponseWrapper> getRefData(@PathVariable String entityTypeName, @PathVariable String code) {
+    	log.info("Entered into the contoller method getRefData with entityTypeName & code::");
         Optional<RefDataEntity> entityOptional = RefDataEntity.byName(entityTypeName);
         if (!entityOptional.isPresent()) {
             return new ResponseEntity<ResponseWrapper>(failure("Reference data type - " + entityTypeName + " is not supported"), HttpStatus.BAD_REQUEST);
