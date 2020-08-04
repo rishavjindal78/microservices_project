@@ -13,7 +13,7 @@ public class Receiver {
 
     @KafkaListener(topics = "trade_producer")
     public void listen(@Payload String trade) {
-        LOG.info("&&&&&&&received message='{}'", trade);
+        LOG.info("Notification received message='{}'", trade);
     }
 
 }

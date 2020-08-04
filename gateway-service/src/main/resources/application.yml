@@ -49,13 +49,13 @@ security:
       clientId: client
       clientSecret: secret123
       scope: apiAccess
-      accessTokenUri: http://localhost:9001/auth/oauth/token
-      userAuthorizationUri: http://localhost:9001/auth/oauth/authorize
+      accessTokenUri: http://localhost:9002/auth/oauth/token
+      userAuthorizationUri: http://localhost:9002/auth/oauth/authorize
       clientAuthenticationScheme: form
     resource:
       filter-order: 3
       #      tokenInfoUri: http://localhost:9001/auth/oauth/check_token
-      userInfoUri: http://localhost:9001/auth/me
+      userInfoUri: http://localhost:9002/auth/me
       #      preferTokenInfo: false
   sessions: ALWAYS
 

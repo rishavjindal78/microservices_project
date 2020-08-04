@@ -62,6 +62,14 @@ public class TradeController {
 	@GetMapping("/aggregate/{tradeId}")
 	public ResponseEntity<TradeVO> aggregate(@PathVariable String tradeId) {
 		log.info("entered into aggregate::::");
+		log.debug("entered into aggregate::::");
+
+		log.warn("entered into aggregate::::");
+
+		log.trace("entered into aggregate::::");
+
+		//log.error("entered into aggregate::::");
+
 		
 		
 		TradeVO tradeVO = new TradeVO();
